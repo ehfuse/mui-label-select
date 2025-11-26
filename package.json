@@ -1,0 +1,60 @@
+{
+    "name": "@ehfuse/mui-label-select",
+    "version": "0.1.0",
+    "description": "A Material-UI Select component with label support, wheel navigation, and read-only mode",
+    "main": "dist/index.js",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "node build.mjs",
+        "prepublishOnly": "npm run build"
+    },
+    "keywords": [
+        "react",
+        "mui",
+        "material-ui",
+        "select",
+        "label",
+        "dropdown",
+        "form",
+        "input"
+    ],
+    "author": "김영진 (Kim Young Jin) <ehfuse@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ehfuse/mui-label-select.git"
+    },
+    "bugs": {
+        "url": "https://github.com/ehfuse/mui-label-select/issues"
+    },
+    "homepage": "https://github.com/ehfuse/mui-label-select#readme",
+    "peerDependencies": {
+        "@emotion/react": ">=11.0.0",
+        "@emotion/styled": ">=11.0.0",
+        "@mui/material": ">=5.0.0",
+        "react": ">=17.0.0",
+        "react-dom": ">=17.0.0"
+    },
+    "devDependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
+        "@mui/material": "^5.17.1",
+        "@types/react": "^18.3.18",
+        "@types/react-dom": "^18.3.5",
+        "esbuild": "^0.24.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "typescript": "^5.7.2"
+    }
+}

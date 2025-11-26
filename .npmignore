@@ -1,0 +1,19 @@
+# Source files (only dist is published)
+src/
+example/
+
+# Config files
+tsconfig.json
+tsconfig.build.json
+build.mjs
+.gitignore
+.git/
+
+# IDE
+.idea/
+.vscode/
+
+# Development files
+*.log
+coverage/
+.env*
