@@ -195,17 +195,19 @@ export default function HomePage() {
                     긴 텍스트가 있는 옵션을 선택하면 ellipsis(...)로 잘려서
                     표시됩니다.
                 </Typography>
-                <Box sx={{ display: "flex", gap: 2, width: "400px" }}>
-                    <FormControl fullWidth>
-                        <LabelSelect
-                            label="시설물 설명"
-                            value={longText}
-                            onChange={handleLongTextChange}
-                            options={longTextOptions}
-                            readOnly={readOnly}
-                            showEmptyOption={false}
-                        />
-                    </FormControl>
+                <Box sx={{ display: "flex", gap: 2, width: "800px" }}>
+                    <Box sx={{ display: "flex", gap: 2, flex: 1, minWidth: 0 }}>
+                        <FormControl fullWidth>
+                            <LabelSelect
+                                label="시설물 설명"
+                                value={longText}
+                                onChange={handleLongTextChange}
+                                options={longTextOptions}
+                                readOnly={readOnly}
+                                showEmptyOption={false}
+                            />
+                        </FormControl>
+                    </Box>
                 </Box>
             </Paper>
         </Box>

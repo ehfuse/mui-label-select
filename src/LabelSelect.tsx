@@ -78,6 +78,11 @@ export function LabelSelect({
                 sx={{
                     width: "100%",
                     minWidth: 0,
+                    "& .MuiSelect-select": {
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                    },
                     // readOnly 모드에서는 focused 상태의 테두리 제거
                     ...(readOnly && {
                         "&.Mui-focused": {
