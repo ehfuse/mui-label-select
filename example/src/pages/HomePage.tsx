@@ -25,9 +25,22 @@ const sizeOptions = [
     { value: "large", label: "Large" },
 ];
 
+const longTextOptions = [
+    {
+        value: "long1",
+        label: "연면적 5천제곱미터 이상의 문화 및 집회시설, 종교시설, 판매시설, 운수시설 중 여객용 시설, 의료시설, 노유자시설, 수련시설, 운동시설, 숙박시설 중",
+    },
+    {
+        value: "long2",
+        label: "이것은 매우 긴 텍스트 옵션입니다. 텍스트가 길어지면 ellipsis 처리가 되어야 합니다.",
+    },
+    { value: "short", label: "짧은 옵션" },
+];
+
 export default function HomePage() {
     const [fruit, setFruit] = useState<string | number>("");
     const [size, setSize] = useState<string | number>("medium");
+    const [longText, setLongText] = useState<string | number>("long1");
 
     // 옵션 스위치 상태
     const [enableWheel, setEnableWheel] = useState(false);
@@ -42,6 +55,12 @@ export default function HomePage() {
 
     const handleSizeChange = (event: SelectChangeEvent<string | number>) => {
         setSize(event.target.value);
+    };
+
+    const handleLongTextChange = (
+        event: SelectChangeEvent<string | number>
+    ) => {
+        setLongText(event.target.value);
     };
 
     return (
@@ -162,6 +181,31 @@ export default function HomePage() {
                     <Typography variant="body2" color="text.secondary">
                         선택된 사이즈: <strong>{size || "없음"}</strong>
                     </Typography>
+                </Box>
+            </Paper>
+
+            <Divider sx={{ my: 3 }} />
+
+            {/* 긴 텍스트 예제 */}
+            <Paper sx={{ p: 3 }}>
+                <Typography variant="h6" gutterBottom>
+                    긴 텍스트 (Ellipsis 처리)
+                </Typography>
+                <Typography variant="body2" color="text.secondary" paragraph>
+                    긴 텍스트가 있는 옵션을 선택하면 ellipsis(...)로 잘려서
+                    표시됩니다.
+                </Typography>
+                <Box sx={{ display: "flex", gap: 2, width: "400px" }}>
+                    <FormControl fullWidth>
+                        <LabelSelect
+                            label="시설물 설명"
+                            value={longText}
+                            onChange={handleLongTextChange}
+                            options={longTextOptions}
+                            readOnly={readOnly}
+                            showEmptyOption={false}
+                        />
+                    </FormControl>
                 </Box>
             </Paper>
         </Box>

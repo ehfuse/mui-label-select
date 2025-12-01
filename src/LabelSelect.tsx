@@ -104,7 +104,18 @@ export function LabelSelect({
                     const option = options.find(
                         (opt) => opt.value === selected
                     );
-                    return option ? option.label : selected;
+                    return (
+                        <span
+                            style={{
+                                display: "block",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                whiteSpace: "nowrap",
+                            }}
+                        >
+                            {option ? option.label : selected}
+                        </span>
+                    );
                 }}
             >
                 {showEmptyOption && <MenuItem value="">{emptyLabel}</MenuItem>}
