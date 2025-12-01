@@ -6,7 +6,14 @@
  * @author 김영진 (ehfuse@gmail.com)
  */
 
-import { InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+import { useRef, useEffect } from "react";
+import {
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+} from "@mui/material";
 import { LabelSelectProps } from "./types";
 
 export function LabelSelect({
@@ -20,8 +27,30 @@ export function LabelSelect({
     emptyLabel = "선택안함",
     readOnly = false, // 읽기 전용 모드
     showEmptyOption = true, // 기본값은 빈 옵션 표시
+    fullWidth = true, // 기본값은 전체 너비
+    formControlProps,
     ...selectProps
 }: LabelSelectProps) {
+    const formControlRef = useRef<HTMLDivElement>(null);
+
+    // FormControl 이중 감싸기 감지
+    useEffect(() => {
+        if (process.env.NODE_ENV !== "production" && formControlRef.current) {
+            let parent = formControlRef.current.parentElement;
+            while (parent) {
+                if (parent.classList.contains("MuiFormControl-root")) {
+                    console.warn(
+                        "[LabelSelect] LabelSelect 컴포넌트는 이미 FormControl을 포함하고 있습니다. " +
+                            "외부에서 FormControl로 감싸지 마세요. FormControl 속성을 설정하려면 " +
+                            "formControlProps를 사용하세요."
+                    );
+                    break;
+                }
+                parent = parent.parentElement;
+            }
+        }
+    }, []);
+
     // value가 options에 없는 경우 빈 값으로 처리
     const safeValue =
         value && options.some((option) => option.value === value) ? value : "";
@@ -55,7 +84,15 @@ export function LabelSelect({
     };
 
     return (
-        <>
+        <FormControl
+            ref={formControlRef}
+            fullWidth={fullWidth}
+            {...formControlProps}
+            sx={{
+                minWidth: 0,
+                ...formControlProps?.sx,
+            }}
+        >
             {showLabel && (
                 <InputLabel id={`${label}-label`}>{label}</InputLabel>
             )}
@@ -132,6 +169,6 @@ export function LabelSelect({
                     </MenuItem>
                 ))}
             </Select>
-        </>
+        </FormControl>
     );
 }

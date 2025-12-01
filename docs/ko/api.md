@@ -14,6 +14,8 @@
     -   [emptyLabel](#emptylabel)
     -   [readOnly](#readonly)
     -   [showEmptyOption](#showemptyoption)
+    -   [fullWidth](#fullwidth)
+    -   [formControlProps](#formcontrolprops)
     -   [className](#classname)
     -   [style](#style)
     -   [sx](#sx)
@@ -22,6 +24,7 @@
 -   [타입](#타입)
     -   [LabelSelectOption](#labelselectoption)
     -   [LabelSelectProps](#labelselectprops)
+-   [주의사항](#주의사항)
 
 ---
 
@@ -37,23 +40,25 @@ import { LabelSelect } from "@ehfuse/mui-label-select";
 
 ## Props
 
-| Prop                                | 타입                                 | 기본값       | 필수 | 설명                       |
-| ----------------------------------- | ------------------------------------ | ------------ | ---- | -------------------------- |
-| [label](#label)                     | `string`                             | -            | ✅   | 라벨 텍스트                |
-| [value](#value)                     | `string \| number`                   | `""`         | -    | 현재 선택된 값             |
-| [onChange](#onchange)               | `(event: SelectChangeEvent) => void` | -            | ✅   | 값 변경 핸들러             |
-| [options](#options)                 | `LabelSelectOption[]`                | -            | ✅   | 선택 가능한 옵션 목록      |
-| [size](#size)                       | `"small" \| "medium"`                | `"medium"`   | -    | Select 크기                |
-| [enableWheel](#enablewheel)         | `boolean`                            | `false`      | -    | 마우스 휠로 값 변경 활성화 |
-| [showLabel](#showlabel)             | `boolean`                            | `true`       | -    | 라벨 표시 여부             |
-| [emptyLabel](#emptylabel)           | `string`                             | `"선택안함"` | -    | 빈 옵션의 라벨 텍스트      |
-| [readOnly](#readonly)               | `boolean`                            | `false`      | -    | 읽기 전용 모드             |
-| [showEmptyOption](#showemptyoption) | `boolean`                            | `true`       | -    | 빈 옵션 표시 여부          |
-| [className](#classname)             | `string`                             | -            | -    | CSS 클래스명               |
-| [style](#style)                     | `CSSProperties`                      | -            | -    | 인라인 스타일              |
-| [sx](#sx)                           | `SxProps<Theme>`                     | -            | -    | MUI sx prop                |
-| [inputProps](#inputprops)           | `InputBaseComponentProps`            | `{}`         | -    | input 요소에 전달할 props  |
-| [defaultValue](#defaultvalue)       | `string \| number`                   | -            | -    | 기본 선택 값               |
+| Prop                                  | 타입                                 | 기본값       | 필수 | 설명                       |
+| ------------------------------------- | ------------------------------------ | ------------ | ---- | -------------------------- |
+| [label](#label)                       | `string`                             | -            | ✅   | 라벨 텍스트                |
+| [value](#value)                       | `string \| number`                   | `""`         | -    | 현재 선택된 값             |
+| [onChange](#onchange)                 | `(event: SelectChangeEvent) => void` | -            | ✅   | 값 변경 핸들러             |
+| [options](#options)                   | `LabelSelectOption[]`                | -            | ✅   | 선택 가능한 옵션 목록      |
+| [size](#size)                         | `"small" \| "medium"`                | `"medium"`   | -    | Select 크기                |
+| [enableWheel](#enablewheel)           | `boolean`                            | `false`      | -    | 마우스 휠로 값 변경 활성화 |
+| [showLabel](#showlabel)               | `boolean`                            | `true`       | -    | 라벨 표시 여부             |
+| [emptyLabel](#emptylabel)             | `string`                             | `"선택안함"` | -    | 빈 옵션의 라벨 텍스트      |
+| [readOnly](#readonly)                 | `boolean`                            | `false`      | -    | 읽기 전용 모드             |
+| [showEmptyOption](#showemptyoption)   | `boolean`                            | `true`       | -    | 빈 옵션 표시 여부          |
+| [fullWidth](#fullwidth)               | `boolean`                            | `true`       | -    | 전체 너비 사용             |
+| [formControlProps](#formcontrolprops) | `FormControlProps`                   | -            | -    | FormControl에 전달할 props |
+| [className](#classname)               | `string`                             | -            | -    | CSS 클래스명               |
+| [style](#style)                       | `CSSProperties`                      | -            | -    | 인라인 스타일              |
+| [sx](#sx)                             | `SxProps<Theme>`                     | -            | -    | MUI sx prop                |
+| [inputProps](#inputprops)             | `InputBaseComponentProps`            | `{}`         | -    | input 요소에 전달할 props  |
+| [defaultValue](#defaultvalue)         | `string \| number`                   | -            | -    | 기본 선택 값               |
 
 ---
 
@@ -174,6 +179,38 @@ Select 컴포넌트의 크기를 지정합니다.
 
 ---
 
+### fullWidth
+
+기본값이 `true`이므로 컴포넌트가 부모 요소의 전체 너비를 차지합니다. `false`로 설정하면 컨텐츠 너비에 맞춰집니다.
+
+```tsx
+// 기본: 전체 너비
+<LabelSelect label="과일" ... />
+
+// 컨텐츠 너비
+<LabelSelect label="과일" fullWidth={false} ... />
+```
+
+---
+
+### formControlProps
+
+내부 FormControl 컴포넌트에 전달할 props입니다. `size`, `disabled`, `error`, `required` 등 FormControl이 지원하는 모든 props를 전달할 수 있습니다.
+
+```tsx
+<LabelSelect
+  formControlProps={{
+    size: 'small',
+    error: true,
+    required: true,
+    sx: { marginBottom: 2 }
+  }}
+  ...
+/>
+```
+
+---
+
 ### className
 
 CSS 클래스명을 지정합니다.
@@ -251,3 +288,41 @@ import type { LabelSelectProps } from "@ehfuse/mui-label-select";
 
 -   [시작하기](./getting-started.md)
 -   [예제](./examples.md)
+
+---
+
+## 주의사항
+
+### FormControl 이중 감싸기 금지
+
+**LabelSelect 컴포넌트는 내부적으로 FormControl을 포함하고 있습니다.** 외부에서 FormControl로 감싸지 마세요.
+
+❌ **잘못된 사용**:
+
+```tsx
+// FormControl이 이중으로 감싸짐 - 경고 발생!
+<FormControl>
+  <LabelSelect label="과일" options={options} ... />
+</FormControl>
+```
+
+✅ **올바른 사용**:
+
+```tsx
+// FormControl 없이 직접 사용
+<LabelSelect label="과일" options={options} ... />
+
+// FormControl 속성이 필요한 경우 formControlProps 사용
+<LabelSelect
+  label="과일"
+  options={options}
+  formControlProps={{
+    size: 'small',
+    error: true,
+    required: true,
+  }}
+  ...
+/>
+```
+
+> ⚠️ 개발 모드에서 FormControl로 이중 감싸면 콘솔에 경고 메시지가 표시됩니다.

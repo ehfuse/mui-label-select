@@ -3,7 +3,6 @@ import {
     Typography,
     Box,
     Paper,
-    FormControl,
     Switch,
     FormControlLabel,
     Divider,
@@ -143,33 +142,31 @@ export default function HomePage() {
                     예제
                 </Typography>
                 <Box sx={{ display: "flex", gap: 3, flexWrap: "wrap", mb: 3 }}>
-                    <FormControl sx={{ minWidth: 200 }}>
-                        <LabelSelect
-                            label="과일 선택"
-                            value={fruit}
-                            onChange={handleFruitChange}
-                            options={fruitOptions}
-                            enableWheel={enableWheel}
-                            readOnly={readOnly}
-                            showLabel={showLabel}
-                            showEmptyOption={showEmptyOption}
-                            size={sizeOption}
-                        />
-                    </FormControl>
+                    <LabelSelect
+                        label="과일 선택"
+                        value={fruit}
+                        onChange={handleFruitChange}
+                        options={fruitOptions}
+                        enableWheel={enableWheel}
+                        readOnly={readOnly}
+                        showLabel={showLabel}
+                        showEmptyOption={showEmptyOption}
+                        size={sizeOption}
+                        formControlProps={{ sx: { flex: 1 } }}
+                    />
 
-                    <FormControl sx={{ minWidth: 200 }}>
-                        <LabelSelect
-                            label="사이즈"
-                            value={size}
-                            onChange={handleSizeChange}
-                            options={sizeOptions}
-                            enableWheel={enableWheel}
-                            readOnly={readOnly}
-                            showLabel={showLabel}
-                            showEmptyOption={showEmptyOption}
-                            size={sizeOption}
-                        />
-                    </FormControl>
+                    <LabelSelect
+                        label="사이즈"
+                        value={size}
+                        onChange={handleSizeChange}
+                        options={sizeOptions}
+                        enableWheel={enableWheel}
+                        readOnly={readOnly}
+                        showLabel={showLabel}
+                        showEmptyOption={showEmptyOption}
+                        size={sizeOption}
+                        formControlProps={{ sx: { flex: 1 } }}
+                    />
                 </Box>
 
                 <Divider sx={{ my: 2 }} />
@@ -195,18 +192,17 @@ export default function HomePage() {
                     긴 텍스트가 있는 옵션을 선택하면 ellipsis(...)로 잘려서
                     표시됩니다.
                 </Typography>
-                <Box sx={{ display: "flex", gap: 2, width: "800px" }}>
-                    <Box sx={{ display: "flex", gap: 2, flex: 1, minWidth: 0 }}>
-                        <FormControl fullWidth>
-                            <LabelSelect
-                                label="시설물 설명"
-                                value={longText}
-                                onChange={handleLongTextChange}
-                                options={longTextOptions}
-                                readOnly={readOnly}
-                                showEmptyOption={false}
-                            />
-                        </FormControl>
+
+                <Box sx={{ width: "800px" }}>
+                    <Box sx={{ display: "flex", flex: 1 }}>
+                        <LabelSelect
+                            label="시설물 설명"
+                            value={longText}
+                            onChange={handleLongTextChange}
+                            options={longTextOptions}
+                            readOnly={readOnly}
+                            showEmptyOption={false}
+                        />
                     </Box>
                 </Box>
             </Paper>

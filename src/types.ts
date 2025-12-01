@@ -6,7 +6,7 @@
  * @author 김영진 (ehfuse@gmail.com)
  */
 
-import type { SxProps, Theme } from "@mui/material";
+import type { SxProps, Theme, FormControlProps } from "@mui/material";
 import { SelectProps, SelectChangeEvent } from "@mui/material";
 import { InputBaseComponentProps } from "@mui/material/InputBase";
 import type { CSSProperties } from "react";
@@ -33,6 +33,7 @@ export interface LabelSelectProps
     className?: string; // CSS 클래스명
     style?: CSSProperties; // 인라인 스타일
     sx?: SxProps<Theme>; // MUI sx prop
+    formControlProps?: Omit<FormControlProps, "children">; // FormControl에 전달할 props
 }
 
 export type { SelectChangeEvent };
