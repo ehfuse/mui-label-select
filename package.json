@@ -1,6 +1,6 @@
 {
     "name": "@ehfuse/mui-label-select",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A Material-UI Select component with label support, wheel navigation, and read-only mode",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
