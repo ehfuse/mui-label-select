@@ -89,7 +89,9 @@ export function LabelSelect({
             fullWidth={fullWidth}
             {...formControlProps}
             sx={{
+                flex: 1,
                 minWidth: 0,
+                width: 0,
                 ...formControlProps?.sx,
             }}
         >
