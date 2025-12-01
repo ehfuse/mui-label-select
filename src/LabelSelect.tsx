@@ -76,6 +76,8 @@ export function LabelSelect({
                 displayEmpty={!showLabel}
                 readOnly={readOnly}
                 sx={{
+                    width: "100%",
+                    minWidth: 0,
                     // readOnly 모드에서는 focused 상태의 테두리 제거
                     ...(readOnly && {
                         "&.Mui-focused": {
